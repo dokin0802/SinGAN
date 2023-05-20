@@ -13,7 +13,8 @@ from SinGAN.imresize import imresize
 import os
 import random
 from sklearn.cluster import KMeans
-
+import torchvision.transforms as transforms
+from PIL import Image
 
 # custom weights initialization called on netG and netD
 
