@@ -75,8 +75,8 @@ def convert_image_np_2d(inp):
     # inp = std*
     return inp
 
-def generate_noise(size,num_samp=1,device='cuda',type='advanced_noise', scale=1):
-    """
+def generate_noise(size,num_samp=1,device='cuda',type='gaussian_mixture', scale=1):
+    
     if type == 'gaussian':
         noise = torch.randn(num_samp, size[0], round(size[1]/scale), round(size[2]/scale), device=device)
         noise = upsampling(noise,size[1], size[2])
@@ -94,6 +94,7 @@ def generate_noise(size,num_samp=1,device='cuda',type='advanced_noise', scale=1)
         noise1 = Image_tensor*0.2
         noise2 = torch.randn(num_samp, size[0], size[1], size[2], device=device)*0.8
         noise = noise1+noise2
+     """
     return noise
 
 def plot_learning_curves(G_loss,D_loss,epochs,label1,label2,name):
