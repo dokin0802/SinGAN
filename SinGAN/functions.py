@@ -75,6 +75,7 @@ def convert_image_np_2d(inp):
     return inp
 
 def generate_noise(size,num_samp=1,device='cuda',type='advanced_noise', scale=1):
+    """
     if type == 'gaussian':
         noise = torch.randn(num_samp, size[0], round(size[1]/scale), round(size[2]/scale), device=device)
         noise = upsampling(noise,size[1], size[2])
@@ -84,6 +85,7 @@ def generate_noise(size,num_samp=1,device='cuda',type='advanced_noise', scale=1)
         noise = noise1+noise2
     if type == 'uniform':
         noise = torch.randn(num_samp, size[0], size[1], size[2], device=device)
+    """
     if type == 'advanced_noise':
         noise1 = Image_tensor*0.2
         noise2 = torch.randn(num_samp, size[0], size[1], size[2], device=device)*0.8
