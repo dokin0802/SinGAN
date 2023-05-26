@@ -75,7 +75,7 @@ def convert_image_np_2d(inp):
     # inp = std*
     return inp
 
-def generate_noise(size,num_samp=1,device='cuda',type='gaussian_mixture', scale=1):
+def generate_noise(size,num_samp=1,device='cuda',type='gaussian', scale=1):
     
     if type == 'gaussian':
         noise = torch.randn(num_samp, size[0], round(size[1]/scale), round(size[2]/scale), device=device)
