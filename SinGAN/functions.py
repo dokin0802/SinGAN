@@ -15,7 +15,7 @@ import random
 from sklearn.cluster import KMeans
 import torchvision.transforms as transforms
 from PIL import Image
-
+import cv2
 # custom weights initialization called on netG and netD
 
 def read_image(opt):
@@ -158,13 +158,15 @@ def calc_gradient_penalty(netD, real_data, fake_data, LAMBDA, device):
     return gradient_penalty
 
 def read_image(opt):
-    x = img.imread('%s/%s' % (opt.input_dir,opt.input_name))
+    x = cv2.imread(opt.input_dir+"/"+opt.input_name)
+    x = cv2.cvtColor(x, cv2.COLOR_RGB2BGR)
     x = np2torch(x,opt)
     x = x[:,0:3,:,:]
     return x
 
 def read_image_dir(dir,opt):
-    x = img.imread('%s' % (dir))
+    x = cv2.imread(dir)
+    x = cv2.cvtColor(x, cv2.COLOR_RGB2BGR)
     x = np2torch(x,opt)
     x = x[:,0:3,:,:]
     return x
